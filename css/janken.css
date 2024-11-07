@@ -1,0 +1,24 @@
+
+
+header{
+  background-color: black;
+  display: flex;
+}
+
+header > h1{
+  color: #ffffff;
+  text-align: center;
+}
+
+main {
+  max-width: 480px;
+  height: 100vh;
+  margin: 0 auto;
+}
+
+section {
+  height: calc(100vh/4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

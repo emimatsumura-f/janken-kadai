@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ひろゆきとじゃんけん</title>
+        <link
+            href="https://fonts.googleapis.com/css?family=Noto+Sans+JP"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="css/janken.css" />
+    </head>
+
+    <header>
+        <h1>わたしとじゃんけんしたいですか？<br>
+        <br>はいかいいえで答えてください。</h1>
+        
+    </header>
+    <body>
+        <main>
+            <section>
+                <div id="cpuhand"><p>コンピュータの手は？？</p></div>
+            </section>
+
+            <section>
+                <div id="result"><p>勝敗は？？</p></div>
+            </section>
+
+            <section>
+                <div id="myhand_gu_0">
+                    <button><img src="images/グー.png" alt="" /></button>
+                </div>
+                <div id="myhand_cho_1">
+                    <button><img src="images/ちょき.png" alt="" /></button>
+                </div>
+                <div id="myhand_pa_2">
+                    <button><img src="images/パー.png" alt="" /></button>
+                </div>
+            </section>
+        </main>
+
+        <script
+            src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"
+        ></script>
+        <script>
+            // 自分の手がグーの時
+            $("#myhand_gu_0").on("click", function () {
+                const random = Math.floor(Math.random() * 3);
+                console.log(random);
+
+                if (random === 0) {
+                    $("#result").text("あいこ？データある？");
+                } else if (random === 1) {
+                    $("#result").text("えへへっ 負けたの？");
+                } else if (random === 2) {
+                    $("#result").text("勝ち？それってあなたの");
+                }
+            });
+
+            // 自分の手がチョキのとき
+            $("#myhand_cho_1").on("click", function () {
+                const random = Math.floor(Math.random() * 3);
+                console.log(random);
+
+                if (random === 0) {
+                    $("#result").text("勝ち？それってあなたの");
+                } else if (random === 1) {
+                    $("#result").text("あいこ？データ");
+                } else if (random === 2) {
+                    $("#result").text("えへへっ 負けたの？");
+                }
+            });
+
+            // 自分の手がパーのとき
+            $("#myhand_pa_2").on("click", function () {
+                const random = Math.floor(Math.random() * 3);
+                console.log(random);
+
+                if (random === 0) {
+                    $("#result").text("えへへっ 負けたの？");
+                } else if (random === 1) {
+                    $("#result").text("勝ち？それってあな");
+                } else if (random === 2) {
+                    $("#result").text("あいこ？データ？");
+                }
+            });
+        </script>
+    </body>
+</html>
