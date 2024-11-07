@@ -10,23 +10,25 @@
         />
         <link rel="stylesheet" href="css/janken.css" />
     </head>
-
     <header>
-        <h1>わたしとじゃんけんしたいですか？<br>
-        <br>はいかいいえで答えてください。</h1>
-        
+        <h1>わたしとじゃんけんしたいですか？ はいかいいえで答えてください。</h1>
     </header>
     <body>
         <main>
-            <section>
-                <div id="cpuhand"><p>コンピュータの手は？？</p></div>
+            <section id="hero" class="">
+                <div id="cpuhand">
+                    <p class="cpuhand-text">
+                        こんちゃ<br /><br />
+                        こんちゃ
+                    </p>
+                </div>
             </section>
 
-            <section>
-                <div id="result"><p>勝敗は？？</p></div>
+            <section id="result-col">
+                <div id="result"><p class="result-text">VS ひろゆき</p></div>
             </section>
 
-            <section>
+            <section id="button">
                 <div id="myhand_gu_0">
                     <button><img src="images/グー.png" alt="" /></button>
                 </div>
@@ -38,52 +40,145 @@
                 </div>
             </section>
         </main>
-
         <script
             src="https://code.jquery.com/jquery-3.7.1.min.js"
             integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
             crossorigin="anonymous"
         ></script>
+
         <script>
+            function showFlyingText(result) {
+                let text;
+                let className;
+
+                switch (result) {
+                    case "win":
+                        text = "勝った！";
+                        className = "win";
+                        break;
+                    case "lose":
+                        text = "負けた。。。";
+                        className = "lose";
+                        break;
+                    case "draw":
+                        text = "引き分け";
+                        className = "draw";
+                        break;
+                }
+
+                const element = $(
+                    `<div class="flying-text ${className}">${text}</div>`
+                );
+                $("body").append(element);
+
+                setTimeout(() => {
+                    element.remove();
+                }, 2000);
+            }
             // 自分の手がグーの時
             $("#myhand_gu_0").on("click", function () {
+                $(this).find("button").addClass("clicked");
+                // 0.5秒後にクラスを削除
+                setTimeout(() => {
+                    $(this).find("button").removeClass("clicked");
+                }, 500);
+
                 const random = Math.floor(Math.random() * 3);
                 console.log(random);
 
                 if (random === 0) {
-                    $("#result").text("あいこ？データある？");
+                    $("#cpuhand").html(
+                        '<img src="images/グー.png" alt="グー" />'
+                    );
+                    $("#result").text(
+                        "あいこ？なんかそういうデータあるんですか？"
+                    );
+                    showFlyingText("draw");
                 } else if (random === 1) {
-                    $("#result").text("えへへっ 負けたの？");
+                    $("#cpuhand").html(
+                        '<img src="images/ちょき.png" alt="チョキ" />'
+                    );
+                    $("#result").text("勝った？それってあなたの感想ですよね。");
+                    showFlyingText("win");
                 } else if (random === 2) {
-                    $("#result").text("勝ち？それってあなたの");
+                    $("#cpuhand").html(
+                        '<img src="images/パー.png" alt="パー" />'
+                    );
+                    $("#result").text(
+                        "負けたっすね。僕は1％の努力でここまで来た。"
+                    );
+                    showFlyingText("lose");
                 }
             });
 
             // 自分の手がチョキのとき
             $("#myhand_cho_1").on("click", function () {
+                $(this).find("button").addClass("clicked");
+                // 0.5秒後にクラスを削除
+                setTimeout(() => {
+                    $(this).find("button").removeClass("clicked");
+                }, 500);
+
                 const random = Math.floor(Math.random() * 3);
                 console.log(random);
 
                 if (random === 0) {
-                    $("#result").text("勝ち？それってあなたの");
+                    $("#cpuhand").html(
+                        '<img src="images/グー.png" alt="グー" />'
+                    );
+                    $("#result").text(
+                        "負けたっすね。僕は1％の努力でここまで来た。"
+                    );
+                    showFlyingText("lose");
                 } else if (random === 1) {
-                    $("#result").text("あいこ？データ");
+                    $("#cpuhand").html(
+                        '<img src="images/ちょき.png" alt="チョキ" />'
+                    );
+                    $("#result").text(
+                        "あいこ？なんかそういうデータあるんですか？"
+                    );
+                    showFlyingText("draw");
                 } else if (random === 2) {
-                    $("#result").text("えへへっ 負けたの？");
+                    $("#cpuhand").html(
+                        '<img src="images/パー.png" alt="パー" />'
+                    );
+                    $("#result").text("勝った？それってあなたの感想ですよね。");
+                    showFlyingText("win");
                 }
             });
 
             // 自分の手がパーのとき
             $("#myhand_pa_2").on("click", function () {
+                $(this).find("button").addClass("clicked");
+                // 0.5秒後にクラスを削除
+                setTimeout(() => {
+                    $(this).find("button").removeClass("clicked");
+                }, 500);
                 const random = Math.floor(Math.random() * 3);
                 console.log(random);
 
                 if (random === 0) {
-                    $("#result").text("えへへっ 負けたの？");
+                    $("#cpuhand").html(
+                        '<img src="images/グー.png" alt="グー" />'
+                    );
+                    $("#result").text("勝った？それってあなたの感想ですよね。");
+                    showFlyingText("win");
                 } else if (random === 1) {
-                    $("#result").text("勝ち？それってあな");
+                    $("#cpuhand").html(
+                        '<img src="images/ちょき.png" alt="チョキ" />'
+                    );
+                    $("#result").text(
+                        "負けたっすね。僕は1％の努力でここまで来た。"
+                    );
+                    showFlyingText("lose");
                 } else if (random === 2) {
-                    $("#result").text("あいこ？データ？");
+                    $("#cpuhand").html(
+                        '<img src="images/パー.png" alt="パー" />'
+                    );
+                    $("#result").text(
+                        "あいこ？なんかそういうデータあるんですか？"
+                    );
+                    showFlyingText("draw");
                 }
             });
         </script>

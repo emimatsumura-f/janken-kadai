@@ -1,24 +1,203 @@
-
-
-header{
-  background-color: black;
-  display: flex;
+.container {
+  width: 90%;
+  max-width: 1120px;
+  margin: 0 auto;
 }
 
-header > h1{
+body {
+  background-color: #ffffff;
+  margin: 0;
+  min-width: 1120px; /* 最小幅を設定 */
+}
+
+header {
+  background-color: black;
+  width: 1120px; /* 幅を固定 */
+  margin: 0 auto; /* 中央揃え */
+}
+
+header > h1 {
   color: #ffffff;
   text-align: center;
 }
 
 main {
-  max-width: 480px;
-  height: 100vh;
-  margin: 0 auto;
+  width: 1120px; /* メインコンテンツの幅を固定 */
+  margin: 0 auto; /* 中央揃え */
+  position: relative;
 }
 
-section {
-  height: calc(100vh/4);
+/* メイン */
+#hero {
+  position: relative;
+  height: 650px;
+  width: 1120px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+#hero::before {
+  content: '';
+  position: absolute;
+  background-image: url(../images/ひろゆき.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+#cpuhand {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+
+/* 自分の手のボタン */
+#button {
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+}
+
+#button button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+
+#button img,
+#cpuhand img {
+  width: 159px;
+  height: auto;
+  cursor: pointer;
+}
+  
+#cpuhand {
+  position: absolute;
+  top: 50%;
+  left: 200px;
+  transform: translateY(-50%); 
+  z-index: 2;
+}
+
+.cpuhand-text {
+  font-size: 60px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+#result-col {
+  background-color: #f7efa2;
+  font-size: 40px;
+  text-align: center;
+  height: 80px;
+}
+
+#result {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.2em;
+}
+
+.flying-text {
+  position: fixed;
+  right: -600px;
+  top: 10%;
+  font-size: 80px; 
+  font-weight: bold;
+  animation: flyOut 2s ease-in forwards; 
+  opacity: 0;
+  color: #000; 
+  z-index: 3;
+}
+
+@keyframes flyOut {
+  0% {
+      right: -300px;
+      opacity: 0;
+  }
+  20% {
+      opacity: 1;
+  }
+  100% {
+      right: 100%;
+      opacity: 0;
+  }
+}
+
+.win {
+  text-shadow:
+      0 0 7px #fff000,
+      0 0 10px #fff000,
+      0 0 21px #fff000,
+      0 0 42px #fff000,
+      0 0 82px#fff000,
+      0 0 92px #fff000,
+      0 0 102px #fff000,
+      0 0 151px #fff000;
+}
+
+.lose {
+  text-shadow:
+      0 0 7px #fff000,
+      0 0 21px #fff000,
+      0 0 42px #fff000,
+      0 0 82px #fff000,
+      0 0 92px #fff000,
+      0 0 102px #fff000,
+      0 0 151px #fff000;
+}
+
+.draw {
+  text-shadow:
+      0 0 7px #fff000,
+      0 0 10px #fff000,
+      0 0 21px #fff000,
+      0 0 42px #fff000,
+      0 0 82px #fff000,
+      0 0 92px #fff000,
+      0 0 102px #fff000,
+      0 0 151px #fff000;
+}
+
+@keyframes flyOut {
+  0% {
+      right: -300px;
+      opacity: 0;
+  }
+  20% {
+      opacity: 1;
+  }
+  100% {
+      right: 100%;
+      opacity: 0;
+  }
+}
+
+#button button {
+  background-color: transparent;
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+
+#button button.clicked {
+  background-color: #ffff00;
+  animation: fadeOut 0.5s forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    background-color: #ffff00;
+  }
+  100% {
+    background-color: transparent;
+  }
 }
